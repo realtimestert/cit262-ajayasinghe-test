@@ -4,6 +4,7 @@
   "description": "week2",
   "main": "index.js",
   "scripts": {
+    "hello":"node helloworld.js" ,
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Andrew Jayasinghe",

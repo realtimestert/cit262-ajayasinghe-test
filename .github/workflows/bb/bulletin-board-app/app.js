@@ -2,7 +2,7 @@ new Vue({
   el: '#events',
 
   data: {
-    event: { title: '', detail: '', date: '' },
+    event: { id:'', title: '', detail: '', date: '' },
     events: []
   },
 
@@ -26,10 +26,17 @@ new Vue({
 
     addEvent: function () {
       if (this.event.title.trim()) {
+        // Generate a unique ID for the new event
+
+        this.event.id = this.generateUniqueId();
+
         this.$http.post('/api/events', this.event)
           .success(function (res) {
             this.events.push(this.event);
             console.log('Event added!');
+            // Reset the event form
+
+            this.event = { id: '', title: '', detail: '', date: '' };
           })
           .error(function (err) {
             console.log(err);
@@ -49,6 +56,12 @@ new Vue({
             console.log(err);
           });
       }
+    },
+
+    generateUniqueId: function(){
+      return 'id-' + Date.now() + '-' + Math.random().toString(36).substr(2,9);
     }
+
+
   }
 });

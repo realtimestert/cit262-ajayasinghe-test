@@ -44,7 +44,7 @@ jobs:
         working-directory: ./.github/workflows/bb/bulletin-board-app
 
       - name: Run tests
-        run: npm test
+        run: npm test --coverage
         working-directory: ./.github/workflows/bb/bulletin-board-app
 # jobs:
 #   test:

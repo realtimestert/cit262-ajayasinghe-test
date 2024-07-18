@@ -12,11 +12,7 @@ jest.mock('aws-sdk', () => {
 
   const mockDynamoDB = {
     DocumentClient: jest.fn(() => mockDocumentClient),
-    // You can mock other DynamoDB methods as needed
-    // For example:
-    // putItem: jest.fn().mockImplementation((params, callback) => {}),
-    // getItem: jest.fn().mockImplementation((params, callback) => {}),
-    // listTables: jest.fn().mockImplementation((params, callback) => {}),
+    
   };
 
   return {

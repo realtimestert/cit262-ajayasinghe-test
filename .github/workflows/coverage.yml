@@ -46,28 +46,5 @@ jobs:
       - name: Run tests
         run: npm test --coverage
         working-directory: ./.github/workflows/bb/bulletin-board-app
-# jobs:
-#   test:
-#     runs-on: ubuntu-latest
 
-#     strategy:
-#       matrix:
-#         node-version: [14.x, 16.x, 18.x]
-
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v2
-
-#       - name: Set up Node.js
-#         uses: actions/setup-node@v2
-#         with:
-#           node-version: ${{ matrix.node-version }}
-
-#       - name: Install dependencies
-#         run: npm install
-#         working-directory: ./bb/bulletin-board-app/
-
-#       - name: Run tests
-#         run: npm test
-#         working-directory: ./bb/bulletin-board-app/
 

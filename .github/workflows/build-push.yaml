@@ -52,16 +52,19 @@ jobs:
     # Build the Docker image
     - name: Build
       run: |-
-        docker build \
-          --tag "us-docker.pkg.dev/gifted-electron-427720-c2/sean-api/api-tests:latest" \
-          --build-arg GITHUB_SHA="$GITHUB_SHA" \
-          --build-arg GITHUB_REF="$GITHUB_REF" \
-          ./bb/bulletin-board-app/Dockerfile
+        id: push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: ./bb/bulletin-board-app/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
     # Push the Docker image to Google Container Registry
     - name: Publish
       run: |-
-        docker push "us-docker.pkg.dev/gifted-electron-427720-c2/sean-api/api-tests:latest"
+        docker push "us-docker.pkg.dev/gifted-electron-427720-c2/andrew-api/api-tests:latest"
 
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
